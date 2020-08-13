@@ -13,7 +13,7 @@ The Score is an application that allows users to search for a movie and will ret
 
 The user can browse without registering, but they also have the option to create an account — at which point they have access to extra features such as being able to leave reviews and add films to their personal favourites page.
 
-You can find a link to our deployed version [here](
+You can find a link to our deployed version [here](https://the-score.herokuapp.com/#/)
 
 
 ## Table of Contents
