@@ -2,8 +2,6 @@ const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
 
-const axios = require('axios').default
-
 function register(req, res) {
   User
     .create(req.body)
@@ -30,12 +28,15 @@ function login(req, res) {
     .catch(error => res.send(error))
 }
 
-//! Favourite Logic
+//* Favourite Logic
 
 function addFavourite(req, res) {
+  //! Front-end
   const favourite = req.body
-  console.log(favourite)
   User
+  //! req.currentUser from secure route, untangling the the token
+  //! Have the current user, as they exist in database, user has favouritemovies key, push this new fav movie from request into user favourites.
+  //! User object has favourites on it
     .findById(req.currentUser)
     .then(user => {
       user.favouriteMovies.push(favourite)
@@ -46,17 +47,15 @@ function addFavourite(req, res) {
     .catch(err => res.status(401).send(err))
 }
 
-//! Not sure 
-
 function deleteFavourite(req, res) {
   const favouriteId = parseInt((req.params.filmId))
   User
-  //! this comes from secureRoute
+  //! This comes from secureRoute
     .findById(req.currentUser)
     .then(user => {
       const filteredFavourites = user.favouriteMovies.filter(movie => favouriteId !== movie.filmId)
       user.favouriteMovies = [...filteredFavourites]
-      //! doesn't mutate so have to save
+      //! Doesn't mutate, so have to save
       return user.save()
     })
     .then(user => res.status(201).json(user))
@@ -69,9 +68,7 @@ function getProfile(req, res) {
     .then(user => {
       res.send(user)
     })
-
 }
-
 
 module.exports = {
   register,
@@ -79,5 +76,4 @@ module.exports = {
   addFavourite,
   deleteFavourite,
   getProfile
-  // generateToken
 }

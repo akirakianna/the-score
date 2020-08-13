@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-const Latest = (props) => {
+const Latest = () => {
 
   const API_KEY = '089c839eda3ed1ce04045e0b371dedeb'
 
@@ -57,7 +57,6 @@ const Latest = (props) => {
       </div>
       <div className="latest-container">
         {movies.map((result, index) => {
-          // console.log(result)
           return <div className="latest-poster"key={index}>
             <Link to={`/movie/${result.title}/${result.id}`}>
               <img src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />

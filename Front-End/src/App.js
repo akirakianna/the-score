@@ -1,8 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Switch, Route, HashRouter } from 'react-router-dom'
 import { UserContext, SpotifyContext } from './UserContext'
-
-
 import Auth, { isLoggedIn } from './lib/auth'
 
 import NavBar from './components/NavBar'
@@ -16,15 +14,10 @@ import SingleMovie from './components/SingleMovie'
 import Latest from './components/Latest'
 import Footer from './components/Footer'
 
-
-
 import axios from 'axios'
 import './styles/style.scss'
 
 const queryString = require('query-string')
-
-
-
 
 const App = () => {
 
@@ -34,7 +27,7 @@ const App = () => {
   const SPOTIFY_AUTH = process.env.SPOTIFY_AUTH
 
   function refreshToken() {
-    
+    //! query string is a package we have installed - turns an object into a query string and sorts it in to keys.
     axios.post('https://accounts.spotify.com/api/token', queryString.stringify({ 'grant_type': 'client_credentials' }), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -61,21 +54,6 @@ const App = () => {
     }
     refreshToken()
     setInterval(refreshToken, (55 * 60000))
-
-    //! query string is a package we have installed - turns an object into a query string and sorts it in to keys.
-    // axios.post('https://accounts.spotify.com/api/token', queryString.stringify({ 'grant_type': 'client_credentials' }), {
-    //   headers: {
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-    //     'Authorization': `Basic ${SPOTIFY_AUTH}`
-    //   }
-    // })
-    //   .then(res => {
-    //     console.log(res.data.access_token)
-    //     setSpotifyInfo(res.data.access_token)
-    //   })
-    //   .catch(res => {
-    //     console.log(res)
-    //   })
   }, [])
 
 

@@ -24,7 +24,7 @@ const Register = (props) => {
     event.preventDefault()
 
     axios.post('/api/register', formData)
-      .then(data => {
+      .then(() => {
         props.history.push('/login')
       })
   }

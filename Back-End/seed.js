@@ -1,10 +1,7 @@
 const mongoose = require('mongoose')
 const User = require('./models/user')
-const Reviews = require('./models/reviews')
 const { dbURI } = require('./config/environment')
-// const { default: Reviews } = require('../Front-End/src/components/Reviews')
 
-//it says there is a throw error and the module cant be found !
 mongoose.connect(
   dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
@@ -41,31 +38,9 @@ mongoose.connect(
           }
         ])
       })
-      // .then(users => {
-      //   return Reviews.create([
-      //     {
-      //       text: 'Great soundtrack! ',
-      //       user: users[3],
-      //       rating: 5,
-      //       filmId: '64690'
-      //     },
-      //     {
-      //       text: 'Shit! ',
-      //       user: users[1],
-      //       rating: 1,
-      //       filmId: '64690'
-      //     },
-      //     {
-      //       text: 'Distinctly average!' ,
-      //       user: users[1],
-      //       rating: 3,
-      //       filmId: '1018'
-      //     }
-      //   ])
+      // .then(reviews => {
+      //   console.log(`${reviews.length} reviews have been created !`)
       // })
-      .then(reviews => {
-        console.log(`${reviews.length} reviews have been created !`)
-      })
       .catch(err => {
         console.log(err)
       })

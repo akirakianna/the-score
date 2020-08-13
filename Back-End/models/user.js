@@ -3,11 +3,6 @@ const mongooseHidden = require('mongoose-hidden')
 const bcrypt = require('bcrypt')
 const mongooseUniqueValidator = require('mongoose-unique-validator')
 
-// const movieSchema = new mongoose.Schema({
-//   title: { type: String, required: true },
-//   id: { type: String, required: true }
-// })
-
 const schema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, minLength: 8, unique: true },
@@ -25,7 +20,6 @@ schema
   })
 schema
   .pre('validate', function checkPassword(next) {
-    //! Important to add this first bit
     if (this.isModified('password') && this._passwordConfirmation !== this.password) {
       this.invalidate('passwordConfirmation', 'should match')
     }
@@ -36,7 +30,7 @@ schema
   .pre('save', function hashPassword(next) {
     console.log(this._passwordConfirmation)
     if (this.isModified('password')) {
-      this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync()) // What is this?
+      this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync()) 
     }
     next()
   })

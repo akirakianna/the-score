@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 
-const HomePage = (props) => {
+const HomePage = () => {
 
   const API_KEY = process.env.MOVIE_KEY
 
@@ -49,8 +49,7 @@ const HomePage = (props) => {
     getMovies()
     setSearch('')
   }
-
-
+  
   return <>
     <section className="home-container">
       <div className="hero-body">

@@ -5,10 +5,8 @@ const commentSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 })
 
-
-
 const reviewSchema = new mongoose.Schema({
-  text: { type: String, required: true },
+  text: { type: String },
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   rating: { type: Number, required: true },
   filmId: { type: String, required: true },
@@ -17,8 +15,5 @@ const reviewSchema = new mongoose.Schema({
 }, {
   timestamps: true
 })
-
-
-
 
 module.exports = mongoose.model('Reviews', reviewSchema)

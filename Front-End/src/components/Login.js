@@ -5,8 +5,6 @@ import { UserContext } from '../UserContext'
 
 
 const Login = (props) => {
-
-  const { user, setUser } = useState()
   const [formData, updateFormData] = useState({
     email: '',
     password: ''
@@ -26,8 +24,6 @@ const Login = (props) => {
     event.preventDefault()
     axios.post('/api/login', formData)
       .then(resp => {
-        // localStorage.setItem saves a key and value
-        // to the browser
         login(resp.data.token)
         console.log(resp.data.user)
         setUserInfo(resp.data.user)

@@ -31,7 +31,8 @@ expressServer.use('/', express.static(dist))
 expressServer.get('*', function(req, res) {
   res.sendFile(path.join(dist, 'index.html'))
 })
-//this server is continuously listening for requests to it
+
+//* This server is continuously listening for requests to it.
 expressServer.listen(port)
 
 module.exports = expressServer

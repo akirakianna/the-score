@@ -7,10 +7,7 @@ import Auth from '../lib/auth'
 
 const Favourites = () => {
   const [movieData, setMovieData] = useState([])
-  // const [info, setInfo] = useState({})
   const { userInfo, setUserInfo } = useContext(UserContext)
-
-  // { console.log(userInfo) }
 
   useEffect(() => {
     axios.get('/api/profile', {
@@ -23,11 +20,9 @@ const Favourites = () => {
       .catch(error => console.log(error))
   }, [userInfo])
 
-  //! Checking the value of the button matches the filmId
-
+  //! Checking the value of the button matches the filmId 
   const deleteFavourite = (event) => {
     const filmId = event.target.value
-    // console.log(filmId)
     axios.delete(`/api/favourites/${filmId}`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
@@ -39,24 +34,20 @@ const Favourites = () => {
 
   return <section className="favouritesPage">
     <h1 className="favouritePageTitle">FAVOURITES</h1>
-    {/* //! first time page loads, user info undefined - so need to make sure it exists. */}
+    {/* First time page loads, the user info is undefined - so need to make sure it exists.  */}
     <div className="favouriteCardContainer">{userInfo && userInfo.favouriteMovies.map((movie, index) => {
       return <div key={index} className="favourites-card">
-        {/* <div className="flower_box"> */}
         <Link to={`/movie/${movie.title}/${movie.filmId}`}> <img className="favouriteImage" src={movie.poster} />
         </Link>
         <div className="favourites-text">
           <h1 className="favouriteMovieTitle">{movie.title}</h1>
-          <p>"{movie.reason}"</p>
+          <p>&quot;{movie.reason}&quot;</p>
           <button className="favouriteDeleteButton" value={movie.filmId} onClick={deleteFavourite}>Delete</button>
         </div>
       </div>
-      // </div>
     })}
     </div>
   </section>
-
-
 }
 
 export default Favourites

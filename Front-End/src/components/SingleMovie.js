@@ -12,16 +12,12 @@ import moment from 'moment'
 const SingleMovie = (props) => {
 
   const { userInfo, setUserInfo } = useContext(UserContext)
-  const { spotifyInfo, setSpotifyInfo } = useContext(SpotifyContext)
+  const { spotifyInfo } = useContext(SpotifyContext)
 
   const [soundtrackData, setSoundtrackData] = useState({})
   const [added, setAdded] = useState(false)
-
-  //! Reason for Favourite Pop Up State
   const [clickFavourite, setClickFavourite] = useState(false)
   const [reason, setReason] = useState('')
-
-  //this needs to be changed to object (think is object)
   const [movieData, setMovieData] = useState([])
   const [reviewData, setReviewData] = useState([])
   const [similarMovieData, updateSimilarMovieData] = useState([])
@@ -36,25 +32,22 @@ const SingleMovie = (props) => {
     window.scrollTo(0, 0)
   }
 
-  //! Returning single movie data
+  //* Returning single movie data
 
   useEffect(() => {
     const movieName = props.match.params.name
     const filmId = props.match.params.id
     const API_KEY = process.env.MOVIE_KEY
 
-
-    console.log('spotify info', spotifyInfo)
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${movieName}&page=1&include_adult=false
     `)
       .then(axiosResp => {
         setMovieData(axiosResp.data.results[0])
         if (userInfo) {
           //! Kianna  - this code is checking to see whether the specified movie already exists inside of the favouriteMovies array
-          //! .some() returns a boolean value, used for ternary operator for add to favourites button.
+          //! .some() returns a boolean value, used in the ternary operator for the add to favourites button.
           const exists = userInfo.favouriteMovies.some(movie => movie.filmId === axiosResp.data.results[0].id)
           setAdded(exists)
-          // scrollToTop()
         }
       })
       .catch(err => console.log(err.response))
@@ -81,16 +74,13 @@ const SingleMovie = (props) => {
       .then(axiosResp => {
         updateSimilarMovieData(axiosResp.data.results)
       })
-
-
   }, [userInfo, props.match])
 
 
-  //! Pushing single movie to favourites(profile) page
+  //* Pushing single movie to favourites(profile) page
 
   const favourite = () => {
     setClickFavourite(true)
-    //! how do I make favourite button disappear?
   }
 
   const submitReason = (event) => {
@@ -108,15 +98,13 @@ const SingleMovie = (props) => {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => {
-        //! is returning the entire user - back end is giving the user
-        //! remember to check what the data is returning/ is what you expect it to be
+        //! Is returning the entire user - back-end is giving the user
         setUserInfo(res.data)
       })
       .catch(err => {
         props.history.push('/login')
         console.log(err.response)
       })
-
   }
 
   function handleComment(filmId) {
@@ -126,7 +114,7 @@ const SingleMovie = (props) => {
     })
       .then((axiosResponse) => {
         setText('')
-        //!0 is when there is no rating yet - the initial state
+        //* 0 is when there is no rating yet - the initial state.
         setRating(0)
         const reviews = [...reviewData]
         reviews.push(axiosResponse.data)
@@ -134,7 +122,7 @@ const SingleMovie = (props) => {
       })
   }
 
-  //deleting a single review 
+  //* Deleting a single review 
   function handleDelete(event) {
     const token = localStorage.getItem('token')
     const reviewId = event.target.value
@@ -144,7 +132,7 @@ const SingleMovie = (props) => {
       })
   }
 
-  // editing a single review
+  //* Editing a single review
 
   function handleEdit(event) {
     const token = localStorage.getItem('token')
@@ -160,12 +148,9 @@ const SingleMovie = (props) => {
           } else {
             return review
           }
-
         })
-
         setReviewData([...updatedReviews])
         console.log(updatedReviews)
-
       })
   }
 
@@ -189,7 +174,7 @@ const SingleMovie = (props) => {
   return <>
     <h1 className="singleMovieTitle">{movieData.title}</h1>
     <p className="singleMovieBio">{movieData.overview}</p>
-    <div className="favouriteMovieButtonContainer">
+    {isLoggedIn() && <div className="favouriteMovieButtonContainer">
       {added ? <button title="Disabled button" disabled>Added</button> : <button className="favouriteMovieButton" onClick={favourite}>Favourite</button>}
       {clickFavourite && <form onSubmit={submitReason}><input
         name="text"
@@ -199,9 +184,10 @@ const SingleMovie = (props) => {
         placeholder="Why it is your favourite film?"
         value={reason}
       />
-   <button className="reasonButton">Submit</button>
+      <button className="reasonButton">Submit</button>
       </form>}
-    </div>
+    </div>}
+
     <div className="singlePageContainer">
       <section className="singleSectionOne">
         {soundtrackData && <div>
@@ -211,12 +197,13 @@ const SingleMovie = (props) => {
           <img className="singleMoviePoster" src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />
         </div>
       </section>
+
       <h2 className="singlePageReviews">Reviews</h2>
       <section className="singleSectionTwo">
         {reviewData && reviewData.map((review, index) => {
           return <div key={index} className="singleReviewContainer">
             <h1>{review.user.username} says:</h1>
-            <p>"{review.text}"</p>
+            <p>&quot;{review.text}&quot;</p>
             <span >{[...Array(review.rating)].map((e, i) => {
               return <span key={i} className="singleMovieStars">★</span>
             })} </span>
@@ -235,6 +222,7 @@ const SingleMovie = (props) => {
           </div>
         })}
       </section>
+
       <section className="singleSectionThree">
         <h3 className="singleLeaveReview">Leave a Review</h3>
         <div className="sectionThreeText">
@@ -249,6 +237,7 @@ const SingleMovie = (props) => {
           </div>
         </div>
       </section>
+      
       <h2 className="singleSimilarTitle">Similar Movies</h2>
       <div className="singleSimilarMovieList">
         {similarMovieData && similarMovieData.map((result, index) => {
