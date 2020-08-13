@@ -151,38 +151,41 @@ const reviewSchema = new mongoose.Schema({
 
 As a stretch goal we wanted to have the option of commenting on a review so we created a comments schema that would then be tied to our review schema. However we did not get around to implementing this on the front-end.
 
+
 ####API Endpoints
 
 * User
-  - /register - **POST**
+   - /register - **POST**
    - *A user can register for an account and their data is stored in our database.*
-  - /login - **POST**
+   - /login - **POST**
    - *A user can also log in to their account, at which point the submitted data is checked. If it's valid (exists in our db), a token is returned.*
 
 * Reviews
- - /reviews - **GET**, **POST**
+   - /reviews - **GET**, **POST**
    - *The post route here was intially for testing purposes and is not utilised on the front-end. The get route allows us to return all of the reviews posted on the site.*
- - /review/:id - **GET**, **DELETE**, **PUT**
-  - *The user has the option to return, edit or delete a specific review by its id.*
- - /movie/reviews/:filmId - **GET**, **POST**
+   - /review/:id - **GET**, **DELETE**, **PUT**
+   - *The user has the option to return, edit or delete a specific review by its id.*
+   - /movie/reviews/:filmId - **GET**, **POST**
    - *Returns all of the reviews for a specific film. The user can also post a review of this film using this route.*
 
 * Profile
- - /profile - **GET**
-  - *The user's profile (shown on our front-end as the favourites page) - returns the current user's information (username, email, id) as well as a list of all of the films they have favourited.*
+   - /profile - **GET**
+   - *The user's profile (shown on our front-end as the favourites page) - returns the current user's information (username, email, id) as well as a list of all of the films they have favourited.*
  
  ![Insomnia Profile Request](./Front-End/screenshots/InsomniaProfile.png) 
 
 * Favourites
- - /favourites - **POST**
-  - *Option to post (or save) a favourite film - It takes the film title, post and id and saves them to the user's favouriteMovies array. On the front-end this is done by the user clicking a favourite button.*
- - /favourites/:filmId - **DELETE**
-  - *User has the option to remove a film from their favourites list - will delete the film and it's data from the favouriteMovies array.*
+   - /favourites - **POST**
+   - *Option to post (or save) a favourite film - It takes the film title, post and id and saves them to the user's favouriteMovies array. On the front-end this is done by the user clicking a favourite button.*
+   - /favourites/:filmId - **DELETE**
+   - *User has the option to remove a film from their favourites list - will delete the film and it's data from the favouriteMovies array.*
  
 ### A Journey 
 *From front-end to back-end and back again!*
 
 #### Favourites 
+
+I wrote the logic for the user having the option to favourite a film and have them displayed on their profile(favourites) page. 
 
 On any single film page, a logged in user has the option to favourite a film.
 
