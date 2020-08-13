@@ -359,6 +359,23 @@ However, we were able to quickly minimise the conflicts by having daily rounds o
 * Our styling needs some adjusting to make it fully responsive.
 * DRY code - a lot of refactoring needs to be done.
 
+## Screenshots
+
+#### Register and Log in
+ 
+ ![Insomnia Profile Request](./Front-End/screenshots/Register.png) 
+  ![Insomnia Profile Request](./Front-End/screenshots/Login.png) 
+
+
+#### Single Film
+
+ ![Insomnia Profile Request](./Front-End/screenshots/SingleFilm1.png) 
+  ![Insomnia Profile Request](./Front-End/screenshots/SingleFilm2.png) 
+
+#### Favourites
+
+ ![Insomnia Profile Request](./Front-End/screenshots/UserFavourites.png) 
+
 ## Credit
 
 Background SVG art created on [Hero Patterns](https://www.heropatterns.com/)
