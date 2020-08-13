@@ -316,7 +316,7 @@ axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language
  
 ```
  
-One of the restrictions with the spotify authorization token was that it expired every hour. To fix this I created a post request within a function:
+One of the restrictions with the Spotify authorization token was that it expired every hour. To fix this I created a post request within a function:
 
 
 ```js
@@ -338,13 +338,13 @@ function refreshToken() {
   }
 ```
 
-This function is then called inside of a setInterval function which is inside of the useEffect hook in the App component.
+This function is then called inside of a setInterval function which is inside of the useEffect Hook in the App component.
 
 
 ## Challenges and Lessons Learned
 
 * This was our first project where we coded collaboratively using Git - allowing us to understand the complexities of merging and conflict resolution. Working as a team with Git was challenging and we realised that when our communication broke down we ended up with numerous conflicts.
-However, we were able to quickly minimise the conflicts by having daily rounds of git commits and merging our versionsof the project. Each team member would screen share when it was their turn to commit and merge - this meant that if there were any conflicts (or other git related issues) we could resolve them as a team.
+However, we were able to quickly minimise the conflicts by having daily rounds of Git commits and merging our versions of the project. Each team member would screen share when it was their turn to commit and merge - this meant that if there were any conflicts (or other Git related issues) we could resolve them as a team.
 * Back-end vs Front-end - Initially we couldn't decide  whether we should store the film information in our own db or make the API calls on the front end. We ended up deciding that it would be better to store minimal data and make the calls on the front-end. This also means our app stays up to date with the MovieDB information.
 * Refactoring our code - There are components in our project that we should have split out into smaller components - e.g the SingleMovie component as there were often multiple people were working on it at once (has most of the main functionality). It also would have made our code easier to read, as right now there far too much going on in one file.
 * Styling - similarily to the above, something that would have potentially helped us would have been to use styled components so we could have split our project's styling out.
