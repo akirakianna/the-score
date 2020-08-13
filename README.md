@@ -281,7 +281,7 @@ We used Spotify's Client Credentials Flow authorization option as it enabled us 
 Using their search by query endpoint we were able to return soundtrack playlists by entering the film name and soundtrack:
 
  - Example Insomnia Call
-    -  https://api.spotify.com/v1/search?q=ema soundtrack&type=playlist
+    -  https://api.spotify.com/v1/search?q=emasoundtrack&type=playlist
 
 
 We used a template literal in our API calls to match the Movie DB query with the Spotify query so that the matching film and soundtrack data would be returned:
