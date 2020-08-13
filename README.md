@@ -182,7 +182,7 @@ As a stretch goal we wanted to have the option of commenting on a review so we c
 ### A Journey 
 *From front-end to back-end and back again!*
 
-#### Favourites - Check with M if makes sense!
+#### Favourites 
 
 On any single film page, a logged in user has the option to favourite a film.
 
