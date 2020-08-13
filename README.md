@@ -76,32 +76,32 @@ For this task we chose [The Movie DB](https://developers.themoviedb.org/3) and [
 Our first goal to work toward was our MVP, so we planned out what we would ideally like to have in the initial working version of our application:
 
 - Homepage
- - Search Bar (main feature)
- - Carousel of posters from films (pick a category from film API)
+   - Search Bar (main feature)
+   - Carousel of posters from films (pick a category from film API)
 
 - Nav Bar
- - Not logged in: Home, Register, Login, Latest, Women
- - Logged in: Home, Latest, Women, Favourites, Reviews, Logout
+   - Not logged in: Home, Register, Login, Latest, Women
+   - Logged in: Home, Latest, Women, Favourites, Reviews, Logout
 
 ![GA Logo](./Front-End/screenshots/LoggedIn.png)
 
 - Single Film Page
- - Film title and synopsis
- - Movie poster
- - Related Spotify soundtrack
- - Reviews (add, edit, delete)
- - Option to favourite
+   - Film title and synopsis
+   - Movie poster
+   - Related Spotify soundtrack
+   - Reviews (add, edit, delete)
+   - Option to favourite
 
 - Favourites
- - Cards of user's favourited films 
+  - Cards of user's favourited films 
 
 - Reviews
- - All reviews left by users of the site
+   - All reviews left by users of the site
 
 - Stretch
- - Similar films (posters) displayed on single film page
- - Additional pages (latest, women directors)
- - Be able to comment on another user's review
+   - Similar films (posters) displayed on single film page
+   - Additional pages (latest, women directors)
+   - Be able to comment on another user's review
 
 #### Figma and Trello
 
@@ -244,7 +244,7 @@ I also created an additonal step where the user has the option to submit a reaso
 
 I utilised the useContext Hook in our project - something that was not taught on our course. It allowed me to store the Spotify token and the current user's information globally in state - meaning their data can be easily shared/accessed across our app's components without having to pass them down through every component as props.
 
-I created two instances of context - UserContext and Spotify Context:
+I created two instances of context - UserContext and SpotifyContext:
 
 ```js
 import { createContext } from 'react'
@@ -278,7 +278,7 @@ We used Spotify's Client Credentials Flow authorization option as it enabled us 
 Using their search by query endpoint we were able to return soundtrack playlists by entering the film name and soundtrack:
 
  - Example Insomnia Call
-  -  https://api.spotify.com/v1/search?q=ema soundtrack&type=playlist
+    -  https://api.spotify.com/v1/search?q=ema soundtrack&type=playlist
 
 
 We used a template literal in our API calls to match the Movie DB query with the Spotify query so that the matching film and soundtrack data would be returned:
