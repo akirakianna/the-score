@@ -185,7 +185,7 @@ As a stretch goal we wanted to have the option of commenting on a review so we c
 
 #### Favourites 
 
-I wrote the logic for the user having the option to favourite a film and have them displayed on their profile(favourites) page. 
+I wrote the functionality for the user to add favourite films to their profile (favourites) page. 
 
 On any single film page, a logged in user has the option to favourite a film.
 
@@ -203,12 +203,14 @@ Once the button is clicked, a post request is made to the API endpoint (along wi
     })
 ```
 
+This request passes through our back-end router:
+
 ```js
 router.route('/favourites')
   .post(secureRoute, userController.addFavourite)
 ```
 
-This then actions the specified function in our user controller:
+Which then actions the specified function in our user controller:
 
 ```js
 function addFavourite(req, res) {
@@ -225,18 +227,18 @@ function addFavourite(req, res) {
 }
 ```
 
-This function requests the current user (able to do this as it is a secure route and the user will exist in the database) and pushes the favourited film to the favourite movie key on the user object.
-It then saves/updates the user with the new information.
+The above function finds the user making the request in our database (the ID of this user comes from our secure route logic) and pushes the favourited film to the favourite movies array on the user object.
+It then saves the user with this new information.
 
-I was then able to display any user's favourited films on their favourites(profile) page.
+I was then able to display any user's favourited films on their favourites (profile) page.
 
-As a couple of additional features I wrapped a ternary operator around the favourite button which checks if the film has been favourited before or not, if it has it disables the button so the user cannot add it again:
+As a couple of additional features I wrapped a ternary operator around the favourite button on the front-end. This statement checks if the film has been favourited before or not, if it has, it disables the button so the user cannot add it again:
 
 ```js
 {added ? <button title="Disabled button" disabled>Added</button> : <button className="favouriteMovieButton" onClick={favourite}>Favourite</button>}
 ```
 
-I also created an additonal step where the user has the option to submit a reason as to why it is their favourite film, which is added as a key to the user object when the post request is made. This then displays alongside the other data on the favourites page:
+I also added functionality for a user to include a reason why the chosen film is one of their favourites, which is submitted with the POST request and included on the favourites (profile) page:
 
 ![Animated favourite button](https://media.giphy.com/media/LOiClVZqq6yigK1GFK/giphy.gif)
 
