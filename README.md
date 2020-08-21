@@ -1,6 +1,6 @@
 ![GA Logo](./Front-End/screenshots/GALogo.png)
 # Project 3 - The Score
-By [Kianna Love](https://github.com/akirakianna), [Raquel Cruickshank](https://github.com/cruickshankprc), [Lara Thompson](https://github.com/larathompson) and [Shaikh Qayum](https://github.com/shaikhqayum)
+By [Kianna Love](https://github.com/akirakianna), [Raquel Cruickshank](https://github.com/cruickshankrpc), [Lara Thompson](https://github.com/larathompson) and [Shaikh Qayum](https://github.com/shaikhqayum)
 
 ## Overview
 
