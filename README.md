@@ -7,7 +7,7 @@ By [Kianna Love](https://github.com/akirakianna), [Raquel Cruickshank](https://g
 This was my first group project at General Assembly.
 I worked within a team of four to create a full-stack MERN application over 8 days, which implemented an Express API.
 
-The Score is an application that allows users to search for a movie and will return the movie information as well as it's associated soundtrack/ playlist from Spotify.
+The Score is an application that allows users to search for a movie and will return the movie information as well as it's associated soundtrack/playlist from Spotify.
 
 ![GA Logo](./Front-End/screenshots/HomePage.png)
 
@@ -110,7 +110,7 @@ I took the lead for managing and organising our project by setting up a Trello b
 ![Trello](./Front-End/screenshots/Project3Trello.png)
 
 
-**! Please note this is only a selection the wireframes:**
+**! Please note this is only a selection of the wireframes:**
 
 ![HomePage Wireframe](./Front-End/screenshots/HomePageWeb.png)
 ![HomePage Mobile](./Front-End/screenshots/HomePageMobile.png)
@@ -154,13 +154,13 @@ As a stretch goal we wanted to have the option of commenting on a review so we c
 
 ####API Endpoints
 
-* User
+* **User**
    - /register - **POST**
    - *A user can register for an account and their data is stored in our database.*
    - /login - **POST**
    - *A user can also log in to their account, at which point the submitted data is checked. If it's valid (exists in our db), a token is returned.*
 
-* Reviews
+* **Reviews**
    - /reviews - **GET**, **POST**
    - *The post route here was intially for testing purposes and is not utilised on the front-end. The get route allows us to return all of the reviews posted on the site.*
    - /review/:id - **GET**, **DELETE**, **PUT**
@@ -168,13 +168,13 @@ As a stretch goal we wanted to have the option of commenting on a review so we c
    - /movie/reviews/:filmId - **GET**, **POST**
    - *Returns all of the reviews for a specific film. The user can also post a review of this film using this route.*
 
-* Profile
+* **Profile**
    - /profile - **GET**
    - *The user's profile (shown on our front-end as the favourites page) - returns the current user's information (username, email, id) as well as a list of all of the films they have favourited.*
  
  ![Insomnia Profile Request](./Front-End/screenshots/InsomniaProfile.png) 
 
-* Favourites
+* **Favourites**
    - /favourites - **POST**
    - *Option to post (or save) a favourite film - It takes the film title, post and id and saves them to the user's favouriteMovies array. On the front-end this is done by the user clicking a favourite button.*
    - /favourites/:filmId - **DELETE**
@@ -347,7 +347,7 @@ This function is then called inside of a setInterval function which is inside of
 
 * This was our first project where we coded collaboratively using Git - allowing us to understand the complexities of merging and conflict resolution. Working as a team with Git was challenging and we realised that when our communication broke down we ended up with numerous conflicts.
 However, we were able to quickly minimise the conflicts by having daily rounds of Git commits and merging our versions of the project. Each team member would screen share when it was their turn to commit and merge - this meant that if there were any conflicts (or other Git related issues) we could resolve them as a team.
-* Back-end vs Front-end - Initially we couldn't decide  whether we should store the film information in our own db or make the API calls on the front end. We ended up deciding that it would be better to store minimal data and make the calls on the front-end. This also means our app stays up to date with the MovieDB information.
+* Back-end vs Front-end - Initially we couldn't decide  whether we should store the film information in our own db or make the API calls on the front-end. We ended up deciding that it would be better to store minimal data and make the calls on the front-end. This also means our app stays up to date with the MovieDB information.
 * Refactoring our code - There are components in our project that we should have split out into smaller components - e.g the SingleMovie component as there were often multiple people were working on it at once (has most of the main functionality). It also would have made our code easier to read, as right now there far too much going on in one file.
 * Styling - similarily to the above, something that would have potentially helped us would have been to use styled components so we could have split our project's styling out.
 
